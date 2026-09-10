@@ -1,0 +1,109 @@
+import { Planet } from './types';
+
+export const planets: Planet[] = [
+  {
+    id: "mercury",
+    name: "Mercurio",
+    color: "#a8a8a8",
+    orbitRadius: 120,
+    radius: 4,
+    period: 0.24,
+    diameter: "4,879 km",
+    distanceToSun: "57.9 millones km",
+    orbitalPeriodStr: "88 días",
+    relativeSize: "0.38 x Tierra",
+    description: "El planeta más pequeño y cercano al Sol. No tiene atmósfera significativa y experimenta temperaturas extremas."
+  },
+  {
+    id: "venus",
+    name: "Venus",
+    color: "#e0c396",
+    orbitRadius: 180,
+    radius: 9.5,
+    period: 0.62,
+    diameter: "12,104 km",
+    distanceToSun: "108.2 millones km",
+    orbitalPeriodStr: "225 días",
+    relativeSize: "0.95 x Tierra",
+    description: "El planeta más caluroso de nuestro sistema solar, con una atmósfera densa que atrapa el calor en un efecto invernadero desbocado."
+  },
+  {
+    id: "earth",
+    name: "Tierra",
+    color: "#4b9fe3",
+    orbitRadius: 240,
+    radius: 10,
+    period: 1,
+    diameter: "12,742 km",
+    distanceToSun: "149.6 millones km",
+    orbitalPeriodStr: "365.25 días",
+    relativeSize: "1 x Tierra",
+    description: "Nuestro hogar, el único planeta conocido que alberga vida. Su superficie está cubierta en un 71% por agua."
+  },
+  {
+    id: "mars",
+    name: "Marte",
+    color: "#e27b58",
+    orbitRadius: 300,
+    radius: 5.3,
+    period: 1.88,
+    diameter: "6,779 km",
+    distanceToSun: "227.9 millones km",
+    orbitalPeriodStr: "687 días",
+    relativeSize: "0.53 x Tierra",
+    description: "El planeta rojo. Conocido por sus enormes volcanes y cañones. Podría haber albergado vida en el pasado."
+  },
+  {
+    id: "jupiter",
+    name: "Júpiter",
+    color: "#c88b3a",
+    orbitRadius: 420,
+    radius: 28,
+    period: 11.86,
+    diameter: "139,820 km",
+    distanceToSun: "778.5 millones km",
+    orbitalPeriodStr: "11.9 años",
+    relativeSize: "11.2 x Tierra",
+    description: "El planeta más grande del sistema solar, un gigante gaseoso famoso por su Gran Mancha Roja, una tormenta gigante."
+  },
+  {
+    id: "saturn",
+    name: "Saturno",
+    color: "#e3d599",
+    orbitRadius: 550,
+    radius: 24,
+    period: 29.46,
+    hasRings: true,
+    diameter: "116,460 km",
+    distanceToSun: "1,434 millones km",
+    orbitalPeriodStr: "29.5 años",
+    relativeSize: "9.4 x Tierra",
+    description: "Conocido por su espectacular y complejo sistema de anillos compuestos de hielo y roca. Es un gigante gaseoso."
+  },
+  {
+    id: "uranus",
+    name: "Urano",
+    color: "#73d7f0",
+    orbitRadius: 670,
+    radius: 14,
+    period: 84.01,
+    diameter: "50,724 km",
+    distanceToSun: "2,871 millones km",
+    orbitalPeriodStr: "84 años",
+    relativeSize: "4.0 x Tierra",
+    description: "Un gigante de hielo que rota de lado. Tiene una atmósfera muy fría y tenue, con un tono azul verdoso."
+  },
+  {
+    id: "neptune",
+    name: "Neptuno",
+    color: "#3f54ba",
+    orbitRadius: 780,
+    radius: 13,
+    period: 164.8,
+    diameter: "49,244 km",
+    distanceToSun: "4,495 millones km",
+    orbitalPeriodStr: "165 años",
+    relativeSize: "3.9 x Tierra",
+    description: "El planeta más lejano, oscuro, frío y azotado por vientos supersónicos. Es el otro gigante de hielo del sistema."
+  }
+];

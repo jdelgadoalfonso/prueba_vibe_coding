@@ -1,0 +1,6 @@
+{
+  "name": "Sistema Solar Interactivo",
+  "description": "Una demostración interactiva del sistema solar con planetas animados.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
