@@ -2,11 +2,11 @@ import { useMemo } from 'react';
 
 export function StarBackground() {
   const stars = useMemo(() => {
-    return Array.from({ length: 600 }).map((_, i) => ({
+    return Array.from({ length: 800 }).map((_, i) => ({
       id: i,
-      x: (Math.random() - 0.5) * 2000,
-      y: (Math.random() - 0.5) * 2000,
-      r: Math.random() * 1.5 + 0.5,
+      x: (Math.random() - 0.5) * 16000,
+      y: (Math.random() - 0.5) * 16000,
+      r: Math.random() * 4 + 1,
       opacity: Math.random() * 0.8 + 0.2,
     }));
   }, []);

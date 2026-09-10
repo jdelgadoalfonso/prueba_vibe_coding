@@ -60,7 +60,7 @@ export default function App() {
         onClick={() => setSelectedPlanet(null)}
       >
         <svg 
-          viewBox="-850 -850 1700 1700" 
+          viewBox="-4000 -4000 8000 8000" 
           className="w-full h-full"
           preserveAspectRatio="xMidYMid meet"
         >
@@ -77,10 +77,10 @@ export default function App() {
           {/* Central Sun */}
           <g className="sun">
             {/* Sun Glow Animation */}
-            <circle cx={0} cy={0} r={65} fill="url(#sun-glow)">
+            <circle cx={0} cy={0} r={180} fill="url(#sun-glow)">
               <animate 
                 attributeName="r" 
-                values="65;70;65" 
+                values="180;200;180" 
                 dur="4s" 
                 repeatCount="indefinite" 
               />
@@ -91,29 +91,43 @@ export default function App() {
                 repeatCount="indefinite" 
               />
             </circle>
-            <circle cx={0} cy={0} r={40} fill="#facc15" />
+            <circle cx={0} cy={0} r={100} fill="#facc15" />
           </g>
 
           {/* Orbits */}
           <g className="orbits">
-            {planets.map(p => (
-              <circle 
-                key={`orbit-${p.id}`}
-                r={p.orbitRadius} 
-                fill="none" 
-                stroke="rgba(255,255,255,0.08)" 
-                strokeWidth="1.5"
-                strokeDasharray="4 4"
-              />
-            ))}
+            {planets.map(p => {
+              const a = p.orbitRadius;
+              const e = p.eccentricity;
+              const b = a * Math.sqrt(1 - e * e);
+              const cx = -a * e;
+              return (
+                <ellipse 
+                  key={`orbit-${p.id}`}
+                  cx={cx}
+                  cy={0}
+                  rx={a}
+                  ry={b} 
+                  fill="none" 
+                  stroke="rgba(255,255,255,0.08)" 
+                  strokeWidth="6"
+                  strokeDasharray="16 16"
+                />
+              );
+            })}
           </g>
 
           {/* Planets */}
           <g className="planets">
             {planets.map(p => {
-              const angle = (time / p.period) * Math.PI * 2;
-              const x = Math.cos(angle) * p.orbitRadius;
-              const y = Math.sin(angle) * p.orbitRadius;
+              const M = (time / p.period) * Math.PI * 2;
+              let E = M;
+              for (let i = 0; i < 3; i++) {
+                E = E - (E - p.eccentricity * Math.sin(E) - M) / (1 - p.eccentricity * Math.cos(E));
+              }
+              const x = p.orbitRadius * (Math.cos(E) - p.eccentricity);
+              const y = p.orbitRadius * Math.sqrt(1 - p.eccentricity * p.eccentricity) * Math.sin(E);
+              
               const isSelected = selectedPlanet?.id === p.id;
 
               return (
@@ -126,10 +140,10 @@ export default function App() {
                   {/* Selection Highlight */}
                   {isSelected && (
                     <circle 
-                      r={p.radius + 6} 
+                      r={p.radius + 20} 
                       fill="none" 
                       stroke="#60a5fa" 
-                      strokeWidth="2" 
+                      strokeWidth="8" 
                       className="opacity-70 animate-pulse"
                     />
                   )}
@@ -141,7 +155,7 @@ export default function App() {
                       ry={p.radius * 0.5} 
                       fill="transparent"
                       stroke="rgba(227, 213, 153, 0.6)"
-                      strokeWidth="4"
+                      strokeWidth="16"
                       transform="rotate(-20)" 
                     />
                   )}
@@ -151,7 +165,7 @@ export default function App() {
                       ry={p.radius * 0.6} 
                       fill="transparent"
                       stroke="rgba(227, 213, 153, 0.3)"
-                      strokeWidth="2"
+                      strokeWidth="8"
                       transform="rotate(-20)" 
                     />
                   )}
@@ -161,9 +175,9 @@ export default function App() {
                   
                   {/* Label */}
                   <text 
-                    y={p.radius + 20} 
+                    y={p.radius + 70} 
                     fill={isSelected ? '#60a5fa' : 'white'} 
-                    fontSize="16" 
+                    fontSize="40" 
                     fontWeight={isSelected ? '600' : '400'}
                     textAnchor="middle"
                     className="pointer-events-none drop-shadow-md select-none transition-colors"

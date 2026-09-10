@@ -3,6 +3,7 @@ export interface Planet {
   name: string;
   color: string;
   orbitRadius: number;
+  eccentricity: number;
   radius: number;
   period: number;
   hasRings?: boolean;
